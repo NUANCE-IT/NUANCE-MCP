@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Vendor-neutral physics-plausible simulator backend.
 
 The simulator implements :class:`MicroscopeAdapter` directly. It is the

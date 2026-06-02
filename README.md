@@ -169,3 +169,7 @@ Commercialization, licensing inquiries, and related intellectual property matter
 ## License
 
 MIT
+
+## Terms of Use and Disclaimer
+
+See [TERMS_OF_USE.md](TERMS_OF_USE.md) for terms of use, safety responsibilities, and warranty/liability disclaimers.

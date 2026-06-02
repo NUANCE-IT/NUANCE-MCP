@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Contract tests — run against every adapter, no vendor hardware required.
 
 These tests assert structural properties that every MicroscopeAdapter must

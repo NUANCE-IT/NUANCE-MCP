@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Example 03 — EELS survey (ZLP reference + core-loss).
 
 Mirrors the ``eels_survey`` skill, but executed directly from Python so

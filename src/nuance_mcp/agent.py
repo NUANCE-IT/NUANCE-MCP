@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Local-Ollama ReAct agent that drives a FastMCP server through MCP.
 
 This module wraps three pieces of plumbing that examples 07 and 08 (and
