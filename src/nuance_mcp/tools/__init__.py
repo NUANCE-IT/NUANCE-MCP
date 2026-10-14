@@ -123,8 +123,20 @@ def _wrap_unsupported(fn):
 # ---------------------------------------------------------------------------
 
 
-def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter) -> None:
-    """Bind every typed tool on ``mcp`` to ``adapter``."""
+def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter, plugins=None) -> None:
+    """Bind every typed tool on ``mcp`` to ``adapter``.
+
+    ``plugins`` is the :class:`~nuance_mcp.plugins.PluginContext`; its
+    acquisition hooks run after every ``acquire_*`` tool and their output is
+    added to the response under ``"plugins"``.
+    """
+    from ..plugins import acquisition_extras
+
+    def _acquired(tool: str, payload, result, as_dict: dict) -> dict:
+        extras = acquisition_extras(plugins, tool, payload, result)
+        if extras:
+            as_dict["plugins"] = extras
+        return as_dict
 
     # ----- diagnostics ----------------------------------------------------
 
@@ -170,7 +182,7 @@ def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter) -> None:
             processing=payload.processing,
             roi=payload.roi,
         )
-        return _image_to_dict(img)
+        return _acquired("acquire_tem_image", payload, img, _image_to_dict(img))
 
     @mcp.tool(name="acquire_stem")
     @_wrap_unsupported
@@ -182,7 +194,7 @@ def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter) -> None:
             rotation_deg=payload.rotation_deg,
             signals=payload.signals,
         )
-        return _image_to_dict(img)
+        return _acquired("acquire_stem", payload, img, _image_to_dict(img))
 
     @mcp.tool(name="acquire_4d_stem")
     @_wrap_unsupported
@@ -194,7 +206,7 @@ def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter) -> None:
             camera_length_mm=payload.camera_length_mm,
             convergence_mrad=payload.convergence_mrad,
         )
-        return _image_to_dict(img)
+        return _acquired("acquire_4d_stem", payload, img, _image_to_dict(img))
 
     @mcp.tool(name="acquire_eels")
     @_wrap_unsupported
@@ -206,7 +218,7 @@ def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter) -> None:
             dispersion_idx=payload.dispersion_idx,
             full_vertical_binning=payload.full_vertical_binning,
         )
-        return _spectrum_to_dict(spec)
+        return _acquired("acquire_eels", payload, spec, _spectrum_to_dict(spec))
 
     @mcp.tool(name="acquire_diffraction")
     @_wrap_unsupported
@@ -216,7 +228,7 @@ def register_tools(mcp: FastMCP, adapter: MicroscopeAdapter) -> None:
             camera_length_mm=payload.camera_length_mm,
             binning=payload.binning,
         )
-        return _image_to_dict(img)
+        return _acquired("acquire_diffraction", payload, img, _image_to_dict(img))
 
     # ----- stage / optics / detectors -------------------------------------
 

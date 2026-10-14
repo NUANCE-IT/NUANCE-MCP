@@ -174,8 +174,9 @@ class SimulatorAdapter(MicroscopeAdapter):
     def acquire_stem(self, width, height, dwell_us, rotation_deg, signals):
         rng = self._rng
         arr = 0.05 * rng.poisson(20, (height, width)).astype(np.float32)
+        margin = min(40, min(height, width) // 4)  # schema allows 64 px scans
         for _ in range(28):
-            cx, cy = rng.integers(40, min(height, width) - 40, 2)
+            cx, cy = rng.integers(margin, min(height, width) - margin, 2)
             r = rng.integers(8, 22)
             yy, xx = np.ogrid[:height, :width]
             mask = (xx - cx) ** 2 + (yy - cy) ** 2 <= r**2
