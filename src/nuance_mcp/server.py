@@ -26,6 +26,7 @@ from fastmcp import FastMCP
 from .core import register_skills, MicroscopeAdapter
 from .tools import register_tools
 from .adapters import load_adapter
+from .plugins import PluginContext, load_plugins
 
 
 INSTRUCTIONS_TEMPLATE = """\
@@ -43,8 +44,13 @@ Capabilities declared by this adapter:
 def build_server(
     adapter_name: str = "simulator",
     adapter_kwargs: Optional[dict] = None,
+    plugins: bool = True,
 ) -> FastMCP:
-    """Instantiate the adapter, register tools + skills, return the server."""
+    """Instantiate the adapter, register tools + skills (+ installed plugins), return the server.
+
+    ``plugins=False`` skips the ``nuance_mcp.plugins`` entry points
+    (see :mod:`nuance_mcp.plugins`).
+    """
 
     adapter_cls = load_adapter(adapter_name)
     adapter: MicroscopeAdapter = adapter_cls(**(adapter_kwargs or {}))
@@ -60,8 +66,12 @@ def build_server(
         ),
     )
 
-    register_tools(mcp, adapter)
+    ctx = PluginContext(mcp=mcp, adapter=adapter)
+    register_tools(mcp, adapter, ctx)
     register_skills(mcp)
+    if plugins:
+        load_plugins(ctx)
+    mcp.plugin_context = ctx  # for tests and embedding
     return mcp
 
 
@@ -71,8 +81,9 @@ def run_server(
     host: str = "127.0.0.1",
     port: int = 8000,
     adapter_kwargs: Optional[dict] = None,
+    plugins: bool = True,
 ) -> None:
-    mcp = build_server(adapter_name, adapter_kwargs)
+    mcp = build_server(adapter_name, adapter_kwargs, plugins=plugins)
     if transport == "stdio":
         mcp.run(transport="stdio")
     else:

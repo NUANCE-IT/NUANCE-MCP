@@ -32,6 +32,10 @@ def main(argv: list[str] | None = None) -> None:
     serve.add_argument(
         "--mode", default=None, help="Adapter-specific mode (e.g. JEOL online/offline)."
     )
+    serve.add_argument(
+        "--no-plugins", action="store_true",
+        help="Do not load installed plugins (e.g. NUScope, NUScope-TOMO).",
+    )
 
     sub.add_parser("list-adapters", help="List available adapter names.")
 
@@ -61,4 +65,5 @@ def main(argv: list[str] | None = None) -> None:
             host=args.host,
             port=args.port,
             adapter_kwargs=kw,
+            plugins=not args.no_plugins,
         )
