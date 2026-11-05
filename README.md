@@ -162,7 +162,7 @@ This work is the subject of the following Northwestern University Invention Disc
 - **Disclosure Title:** Universal Control Protocol for Scientific Instrumentation Using Extended Model Context Protocol
 - **Invention ID:** Disc-ID-25-05-22-002
 - **Tech ID:** 2025-136
-- **Inventors:** Roberto Moreno Souza dos Reis, Vinayak P. Dravid
+- **Inventors:** Roberto dos Reis, Vinayak P. Dravid
 
 Commercialization, licensing inquiries, and related intellectual property matters should be directed to the Innovation and New Ventures Office (INVO) at Northwestern University.
 
