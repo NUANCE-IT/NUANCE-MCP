@@ -10,6 +10,7 @@ Public API:
     JobRegistry, JobState,
     SimulatorAdapter,
     register_skills,
+    MemoryStore, register_memory,
 """
 
 from .adapter import (
@@ -21,6 +22,7 @@ from .adapter import (
 )
 from .capabilities import Capability
 from .lifecycle import JobRegistry, JobState, JobRecord
+from .memory import MemoryStore, register_memory
 from .simulator import SimulatorAdapter
 from .skills import register_skills
 
@@ -34,6 +36,8 @@ __all__ = [
     "JobRegistry",
     "JobState",
     "JobRecord",
+    "MemoryStore",
+    "register_memory",
     "SimulatorAdapter",
     "register_skills",
 ]

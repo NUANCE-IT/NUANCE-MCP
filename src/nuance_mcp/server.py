@@ -23,7 +23,7 @@ from typing import Optional
 
 from fastmcp import FastMCP
 
-from .core import register_skills, MicroscopeAdapter
+from .core import register_skills, MicroscopeAdapter, MemoryStore, register_memory
 from .tools import register_tools
 from .adapters import load_adapter
 
@@ -43,8 +43,15 @@ Capabilities declared by this adapter:
 def build_server(
     adapter_name: str = "simulator",
     adapter_kwargs: Optional[dict] = None,
+    memory_db_path: Optional[str] = None,
 ) -> FastMCP:
-    """Instantiate the adapter, register tools + skills, return the server."""
+    """Instantiate the adapter, register tools + skills + memory, return the server.
+
+    ``memory_db_path`` overrides the persistent experiment-memory location
+    (default resolved by :func:`nuance_mcp.core.memory.default_db_path`,
+    honouring ``NUANCE_MEMORY_DB``); pass ``":memory:"`` for an ephemeral,
+    non-persistent store (used by tests).
+    """
 
     adapter_cls = load_adapter(adapter_name)
     adapter: MicroscopeAdapter = adapter_cls(**(adapter_kwargs or {}))
@@ -62,6 +69,7 @@ def build_server(
 
     register_tools(mcp, adapter)
     register_skills(mcp)
+    register_memory(mcp, MemoryStore(memory_db_path))
     return mcp
 
 
@@ -71,8 +79,9 @@ def run_server(
     host: str = "127.0.0.1",
     port: int = 8000,
     adapter_kwargs: Optional[dict] = None,
+    memory_db_path: Optional[str] = None,
 ) -> None:
-    mcp = build_server(adapter_name, adapter_kwargs)
+    mcp = build_server(adapter_name, adapter_kwargs, memory_db_path)
     if transport == "stdio":
         mcp.run(transport="stdio")
     else:
