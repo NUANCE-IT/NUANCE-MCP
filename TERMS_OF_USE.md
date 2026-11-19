@@ -1,6 +1,6 @@
 # Terms of Use and Disclaimer
 
-Copyright (c) 2026 Roberto dos Reis
+Copyright © 2026 by Northwestern University. All Rights Reserved.
 
 This software is provided under the MIT License. By using, copying, modifying, or distributing this software, you agree to the terms in the [LICENSE](LICENSE) file.
 
