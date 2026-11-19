@@ -1,3 +1,7 @@
+# Copyright © 2026 by Northwestern University. All Rights Reserved.
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """NUANCE-MCP — vendor-agnostic MCP server for multimodal EM."""
 
 __version__ = "0.2.0"

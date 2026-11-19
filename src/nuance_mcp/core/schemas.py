@@ -1,3 +1,7 @@
+# Copyright © 2026 by Northwestern University. All Rights Reserved.
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Pydantic v2 input schemas — vendor-neutral.
 
 Every typed tool registered by :mod:`nuance_mcp.tools` validates its

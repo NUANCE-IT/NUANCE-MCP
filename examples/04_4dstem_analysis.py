@@ -1,3 +1,7 @@
+# Copyright © 2026 by Northwestern University. All Rights Reserved.
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Example 04 — 4D-STEM acquisition + derived analyses.
 
 Acquires a small 4D-STEM scan and runs the bundled derived-analysis tools:

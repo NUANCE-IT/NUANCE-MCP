@@ -1,3 +1,7 @@
+# Copyright © 2026 by Northwestern University. All Rights Reserved.
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Command-line entry point for nuance-mcp."""
 
 from __future__ import annotations
