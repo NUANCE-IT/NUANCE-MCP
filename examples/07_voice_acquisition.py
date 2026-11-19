@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Example 07 — Voice-driven acquisition through a local LLM agent.
 
 Demonstrates how to pipe a transcribed voice command into the MCP tool

@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Example 01 — Basic microscope-state query.
 
 Connects to the chosen adapter, prints capability list and column state.

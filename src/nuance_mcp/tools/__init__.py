@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Register every typed tool on a FastMCP instance, bound to an adapter.
 
 The tools layer is the only place that knows the *shape* of the public MCP

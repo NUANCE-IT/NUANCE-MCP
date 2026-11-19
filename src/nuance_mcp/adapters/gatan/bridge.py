@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """ZeroMQ bridge protocol adapter for Gatan/DM.
 
 This module implements the vendor bridge plugin described in

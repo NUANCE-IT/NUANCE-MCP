@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Example 02 — TEM image acquisition with bounded validation.
 
 Sequence:

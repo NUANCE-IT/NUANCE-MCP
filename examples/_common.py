@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Roberto dos Reis
+# SPDX-License-Identifier: MIT
+# Terms of use: See LICENSE and TERMS_OF_USE.md for permitted use, disclaimers, and limitations.
+
 """Helpers shared by every example.
 
 * ``--adapter NAME`` selects the backend (``gatan``, ``jeol``, ``simulator``).
